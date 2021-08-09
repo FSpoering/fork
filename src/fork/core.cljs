@@ -219,7 +219,7 @@
 
 (defn dirty
   [values initial-values]
-  (first (data/diff values (or initial-values {}))))
+  (seq (filter some? (butlast (data/diff values (or initial-values {}))))))
 
 (defn handle-submit
   [evt {:keys [state server on-submit prevent-default?
